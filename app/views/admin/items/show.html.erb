@@ -1,0 +1,8 @@
+<div>
+<%= attachment_image_tag @item, :image_id %>
+  <p>商品名：<%= @item.name %></p>
+  <p>商品説明: <%= @item.introduction %></p>
+   <p>ジャンル：<%=@item. ganre_id  %></p>
+  <p>税抜き価格：<%= @item.price %></p>
+  <p>ステータス<%= @item.is_active %></p>
+</div>
