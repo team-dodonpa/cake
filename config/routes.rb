@@ -7,19 +7,22 @@ Rails.application.routes.draw do
   resources :items
   resources :homes
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :customers do
+resources :customers do
     collection do
-    	     get 'quit'
-    	     patch 'out'
-        end
-    	 end
-  resources :deliveries
-  
-   devise_for :admins
-   namespace :admin do
-  resources :items
-  resources :customers
-  resources :genres
-  resources :orders
+        get 'quit'
+        patch 'out'
+    end
+ end
+resources :deliveries
+
+devise_for :admins
+
+namespace :admin do
+    
+    resources :items
+    resources :customers
+    resources :genres
+    resources :orders
 end 
+
 end
