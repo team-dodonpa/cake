@@ -1,14 +1,15 @@
 class CustomersController < ApplicationController
-
+  
   def show
-    @customer = Customer.find(params[:id])
+    @customers = Customers.find(params[:id])
   end
 
   def edit
-    @customer = Customer.find(params[:id])
-
+     @customers = Customers.find(params[:id])
+     customer.update(customer_params)
+      redirect_to customer_path(@customer_id)
   end
-
+  
 
   def quit
   end
@@ -17,9 +18,7 @@ class CustomersController < ApplicationController
   end
 
   def update
-     @customer = Customer.find(params[:id])
-     @customer.update(customer_params)
-     redirect_to customer_path(@customer)
+     @customers = Customers.find(params[:id])
   end
 
   private
@@ -28,4 +27,4 @@ class CustomersController < ApplicationController
 
   	end
 
-end
+ end
