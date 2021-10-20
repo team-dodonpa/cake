@@ -3,17 +3,23 @@ Rails.application.routes.draw do
   get 'homes/top'
   get 'homes/about'
   devise_for :customers
-  devise_for :admins
   resources :cart_details
   resources :items
   resources :homes
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-resources :customers, only: [:show, :edit,:update]do
-  collection do
-  	     get 'quit'
-  	     patch 'out'
-
-  	   end
-  	 end
-
+  resources :customers do
+    collection do
+    	     get 'quit'
+    	     patch 'out'
+        end
+    	 end
+  resources :deliveries
+  
+   devise_for :admins
+    namespace :admin do
+  resources :items
+  resources :customers
+  resources :genres
+  resources :orders
+end 
 end

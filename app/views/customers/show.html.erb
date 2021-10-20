@@ -1,19 +1,36 @@
-マイページ
-登録情報
-<%= link_to '編集する',edit_customer_path(@customer) %>
-氏名
-<%= @customer.first_name %> <%= @customer.last_name %>
-カナ
-<%= @customer.first_name_kana %> <%= @customer.last_name_kana %>
-郵便番号
-<%= @customer.postal_code %>
-住所
-<%= @customer.address %>
-電話番号
-<%= @customer.telephone_number %>
-メールアドレス
-<%= @customer.email %>
-配送先
+<h4 class="ml-4 bg-light d-inline">マイページ</h4>
+    <div class='col-md-5'>
+        <tr><td>登録情報</td>
+            <td><%= link_to '編集する',edit_customer_path(@customer),class: "btn btn-success" %></td>
+        </tr>
+      <table class="table table-bordered table-condensed" >
+            <tr><td class="info" >氏名</td>
+                <td><%= @customer.first_name %> <%= @customer.last_name %></td>
+            </tr>
+            <tr><td class="info">カナ</td>
+                <td><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td>
+            </tr>
+            <tr><td class="info">郵便番号</td>
+                <td><%= @customer.postal_code %></td>
+            </tr>
+            <tr><td class="info">住所</td>
+                <td><%= @customer.address %></td>
+            </tr>
+            <tr><td class="info">電話番号</td>
+                <td><%= @customer.telephone_number %></td>
+            </tr>
+            <tr><td class="info">メールアドレス</td>
+                <td><%= @customer.email %></td>
+            </tr>
+      </table>
+            <div class="mypage-bottoms">
+                <tr><td>配送先</td>
 
+                </tr>
+                <tr><td>注文一覧</td>
+
+                </tr>
+            </div>
+    </div>
 
 
