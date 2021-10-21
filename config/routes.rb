@@ -17,7 +17,10 @@ Rails.application.routes.draw do
 	 end
     resources :deliveries
 
-    devise_for :admins
+  devise_for :admin, skip: [:passwords,],containers: {
+      sessions:  'admin/sessions'
+  }
+
     namespace :admin do
     resources :items
     resources :customers
