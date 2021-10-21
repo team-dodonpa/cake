@@ -1,19 +1,41 @@
-マイページ
-登録情報
-<%= link_to '編集する',edit_customer_path(@customer) %>
-氏名
-<%= @customer.first_name %> <%= @customer.last_name %>
-カナ
-<%= @customer.first_name_kana %> <%= @customer.last_name_kana %>
-郵便番号
-<%= @customer.postal_code %>
-住所
-<%= @customer.address %>
-電話番号
-<%= @customer.telephone_number %>
-メールアドレス
-<%= @customer.email %>
-配送先
-
-
+<h4 class="ml-4 d-inline"style="color: black; background-color: silver;">マイページ</h4>
+    <div class='form-inline m-4'>
+        <h4>登録情報</h4>
+        <div class='mx-5'>
+            <%= link_to '編集する',edit_customer_path(@customer),class: "btn btn-success" %>
+        </div>
+    </div>
+    <div class='col-md-5'>
+        <table class="table table-bordered table-condensed" >
+            <tr><td class="mt-1" style="color: black; background-color: silver;">氏名</td>
+                <td><%= @customer.first_name %> <%= @customer.last_name %></td>
+            </tr>
+                <tr><td class="mt-1" style="color: black; background-color: silver;">カナ</td>
+                    <td><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td>
+                </tr>
+                    <tr><td class="mt-1" style="color: black; background-color: silver;">郵便番号</td>
+                        <td><%= @customer.postal_code %></td>
+                    </tr>
+                    <tr><td class="mt-1" style="color: black; background-color: silver;">住所</td>
+                        <td><%= @customer.address %></td>
+                    </tr>
+                <tr><td class="mt-1" style="color: black; background-color: silver;">電話番号</td>
+                    <td><%= @customer.telephone_number %></td>
+                </tr>
+            <tr><td class="mt-1" style="color: black; background-color: silver;">メールアドレス</td>
+                <td><%= @customer.email %></td>
+            </tr>
+        </table>
+        <div class='form-inline m-5'>
+            <tr><td class="info">配送先</td>
+            <div class='mx-5'>
+                <%=link_to'一覧を見る',deliveries_path, class:"btn btn-primary" %>
+                </tr>
+            </div>
+        </div>
+        <div>
+            <tr><td class="info">注文履歴</td>
+            </tr>
+        </div>
+    </div>
 
