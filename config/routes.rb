@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-root 'homes#top'
+    devise_for :admin, controllers: {
+  sessions: "admin/sessions"
+}
+    root 'homes#top'
     get 'homes/top'
     get 'homes/about'
-    devise_for :customers
+   devise_for :customers, controllers: {
+    sessions:      'customers/sessions',
+    passwords:     'customers/passwords',
+    registrations: 'customers/registrations'
+   }
     resources :cart_details
     resources :items
     resources :homes
@@ -15,9 +22,7 @@ root 'homes#top'
 	 end
     resources :deliveries
 
-  devise_for :admin, skip: [:passwords,],containers: {
-      sessions:  'admin/sessions'
-  }
+  
 
     namespace :admin do
     resources :items
