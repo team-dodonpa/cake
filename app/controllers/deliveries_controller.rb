@@ -1,10 +1,14 @@
 class DeliveriesController < ApplicationController
-  before_action :authenticate_customer!
 
   def index
+    @delivery = Delivery.new
+    @deliveries =Delivery.all
   end
 
   def create
+    @delivery = Delivery.new(delivery_params)
+    @delivery.save
+    redirect_to deliveries_path
   end
 
   def edit
@@ -15,4 +19,10 @@ class DeliveriesController < ApplicationController
 
   def destroy
   end
+
+ private
+  def delivery_params
+    params.require(:delivery).permit(:last_name, :first_name, :postal_code, :address, :last_name_kana, :first_name_kana, :address_name, :customer_id)
+  end
+
 end

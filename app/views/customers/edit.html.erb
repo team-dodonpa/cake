@@ -1,0 +1,36 @@
+<%= form_with model:@customer, local:true do |f| %>
+<h4 class="ml-4 d-inline"style="color: black; background-color: silver;">会員情報編集</h4>
+  <div class="m-5">
+      <div class="form-group col-xs-12">
+        <%= f.label "氏名", class: "col-sm-2 control-label" %>
+        <%= f.text_field :first_name %> <%= f.text_field :last_name %>
+      </div>
+        <div class="form-group col-xs-12">
+          <%= f.label "フリガナ", class: "col-sm-2 control-label" %>
+          <%= f.text_field :first_name_kana %> <%= f.text_field :last_name_kana %>
+        </div>
+          <div class="form-group col-xs-12">
+            <%= f.label "郵便番号", class: "col-sm-2 control-label" %>
+            <%= f.text_field :postal_code %>
+          </div>
+           <div class="form-group col-xs-2">
+             <%= f.label "住所", class: "col-sm-2 control-label" %>
+             <%= f.text_field :address, class: "col-sm-4" %>
+           </div>
+         <div class="form-group col-xs-12">
+           <%= f.label "電話番号", class: "col-sm-2 control-label" %>
+           <%= f.text_field :telephone_number %>
+         </div>
+       <div class="form-group col-xs-12">
+         <%= f.label "メールアドレス", class: "col-sm-2 control-label" %>
+         <%= f.text_field :email %>
+       </div>
+      <div class='form-inline ml-5'>
+         <%= f.submit '変更を保存',class: "btn btn-success col-6" %>
+         <div class='mx-5'>
+           <%= link_to '退会する',quit_customers_path,class:"btn btn-danger" %>
+         </div>
+      </div>
+   <% end %>
+ </div>
+ 
