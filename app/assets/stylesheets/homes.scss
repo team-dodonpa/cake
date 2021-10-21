@@ -1,3 +1,38 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.word {
+    text-align: center;
+    font-size: 25px;
+}
+
+.A {
+    text-align: center;
+    font-size: 80px;
+}
+
+.hoge {
+    height: 300px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.main-visual {
+
+  /* 表示領域の幅100％ 高さ100％で表示（縦横比は無視） */
+  background-size: 100% 100%;
+  
+  background-position: center;
+
+  width: 600px;
+  
+  height: 300px;
+  
+  background-image: url(/assets/cake2.jpeg);
+}
+
+.top-text {
+    text-align: center ;
+    color: #fff; 
+    
+}
