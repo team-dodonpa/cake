@@ -6,6 +6,8 @@ class CustomersController < ApplicationController
 
   def edit
      @customer = Customer.find(params[:id])
+     customer.update(customer_params)
+      redirect_to customer_path(@customer_id)
   end
 
 
