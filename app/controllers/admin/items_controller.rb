@@ -29,9 +29,15 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_item_path
   end
   
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to admin_items_path
+  end
+  
   private
 
   def item_params
-    params.require(:item).permit(:name, :image_id, :introduction, :price, :is_active) #:genre_id )
+    params.require(:item).permit(:name, :image, :introduction, :price, :is_active, :genre_id)
   end
 end
