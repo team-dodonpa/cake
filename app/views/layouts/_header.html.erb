@@ -4,27 +4,17 @@
     </ul>
 
     <ul class="navbar-nav ml-auto my-3">
-<<<<<<< HEAD
-<% if customer_signed_in? %>
-=======
       <% if customer_signed_in? %>
->>>>>>> origin/develop
       <li class="nav-item p-2 mr-5 btn-light rounded">
         <%= link_to 'マイページ', customer_path(current_customer.id), class: "text-decoration-none text-secondary" %></li>
       <li class="nav-item p-2 mr-5 btn-light rounded">
         <%= link_to '商品一覧', items_path, class: "text-decoration-none text-secondary" %></li>
       <li class="nav-item p-2 mr-5 btn-light rounded">
         <%= link_to 'カート', cart_details_path(current_customer.id), class: "text-decoration-none text-secondary px-2" %></li>
-<<<<<<< HEAD
       <li class="nav-item p-2 btn-light rounded">
         <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "text-decoration-none text-secondary" %>
       </li>
 <% else %>
-=======
-      <li class="nav-item p-2 mr-5 btn-light rounded">
-        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "text-decoration-none text-secondary" %></li>
-      <% else %>
->>>>>>> origin/develop
       <li class="nav-item p-2 mr-5 btn-light rounded">
         <%= link_to 'About', homes_about_path, class: "text-decoration-none text-secondary" %></li>
       <li class="nav-item p-2 mr-5 btn-light rounded">
@@ -33,17 +23,10 @@
         <%= link_to '新規登録', new_customer_registration_path, class: "text-decoration-none text-secondary" %></li>
       <li class="nav-item p-2 mr-5 btn-light rounded">
         <%= link_to 'ログイン', new_customer_session_path, class: "text-decoration-none text-secondary" %></li>
-<<<<<<< HEAD
-<% end %>
-=======
       <% end %>
->>>>>>> origin/develop
     </ul>
   </header>
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/develop
