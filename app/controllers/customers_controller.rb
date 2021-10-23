@@ -17,8 +17,14 @@ class CustomersController < ApplicationController
 
   def update
      @customer = Customer.find(params[:id])
-     @customer.update(customer_params)
-     redirect_to customer_path(@customer)
+     if
+      @customer.update(customer_params)
+      flash[:notice] = "変更を完了しました"
+      redirect_to customer_path(@customer)
+     else
+      flash[:notice] = "入力内容を確認してください"
+      render :edit
+     end
   end
   private
   	def customer_params
