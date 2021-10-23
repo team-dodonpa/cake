@@ -1,4 +1,5 @@
 <h4 class="m-4 d-inline"style="color: black; background-color: silver;">配送先登録/一覧</h4>
+  <%= render 'deliveries/error',resource:@delivery %>
   <%= form_with model:@delivery, local:true do |f| %>
   <div class="m-5">
         <div class="form-group col-xs-12">
@@ -14,7 +15,7 @@
                 <%= f.text_field :address_name %> <%= f.submit '新規登録',class:"btn btn-success ml-5" %>
         </div>
   <% end %>
-<table class="table table-hover table-bordered w-75">
+<table class="table table-hover table-bordered ">
     <thead>
         <div class="info">
             <th>郵便番号</th>
@@ -29,9 +30,11 @@
              <td><%= delivery.postal_code %></td>
                <td><%= delivery.address %></td>
              <td><%= delivery.address_name %></td>
+          <div class>
            <td><%= link_to '編集する',edit_delivery_path(delivery),class:"btn btn-success ml-4" %>
                <%= link_to '削除する',delivery_path(delivery),method: :delete, data: {confirm: "本当に削除してもよろしいですか？"},class:"btn btn-danger ml-3" %>
            </td>
+           </div>
           </tr>
         <% end %>
       </tbody>

@@ -1,14 +1,22 @@
 class DeliveriesController < ApplicationController
 
   def index
+    @customer = current_customer
     @delivery = Delivery.new
-    @deliveries =Delivery.all
+    @deliveries = @customer.deliveries
   end
 
   def create
     @delivery = Delivery.new(delivery_params)
-    @delivery.save
-    redirect_to deliveries_path
+    @delivery.customer = current_customer
+    if @delivery.save
+       redirect_to deliveries_path
+    else
+      @customer = current_customer
+      @deliveries = @customer.deliveries
+      flash[:notice] = "入力内容を確認してください"
+      render :index
+    end
   end
 
   def edit
@@ -16,9 +24,13 @@ class DeliveriesController < ApplicationController
   end
 
   def update
-     @delivery = Delivery.find(params[:id])
-     @delivery.update(delivery_params)
-     redirect_to deliveries_path
+        @delivery = Delivery.find(params[:id])
+     if @delivery.update(delivery_params)
+        redirect_to deliveries_path
+     else
+        flash[:notice] = "入力内容を確認してください"
+        render :edit
+     end
   end
 
   def destroy
