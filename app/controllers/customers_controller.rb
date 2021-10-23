@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   end
 
   def edit
-     @customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
 
@@ -13,6 +13,10 @@ class CustomersController < ApplicationController
   def quit
   end
   def out
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   def update
@@ -31,4 +35,5 @@ class CustomersController < ApplicationController
   		params.require(:customer).permit(:email,:encrypted_password,:reset_password_token,:reset_password_sent_at,:remember_created_at,:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:is_deleted,:update_at,:created_at)
 
   	end
+
 end

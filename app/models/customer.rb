@@ -12,8 +12,6 @@ class Customer < ApplicationRecord
         validates :telephone_number, :postal_code, numericality: { only_integer: true }
 
 #退会機能
-  #def active_for_authentication?
-    #super && (self.is_valid == false)
-  #end
+
 
 end
