@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+#会員のみ閲覧可能
+    before_action :authenticate_customer!
 
   def show
     @customer = Customer.find(params[:id])
