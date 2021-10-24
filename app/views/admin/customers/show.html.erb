@@ -1,0 +1,48 @@
+<h4 class="ml-4 d-inline"style="color: black; background-color: silver;"><%= @customer.first_name %> <%= @customer.last_name %>さんの会員詳細</h4>
+  <div class="mx-5 p-5">
+      <div>
+        <tr class: "col-sm-2 control-label " %>会員ID:</tr>
+        
+        <tr><%= @customer.id %><tr>
+      </div>
+       <div>
+        <tr class: "col-sm-2 control-label " > 氏名:</tr>
+        <tr><%= @customer.first_name %> <%= @customer.last_name %></tr>
+       </div>
+     
+         <div>
+          <tr class: "col-sm-2 control-label" %>フリガナ:</tr>
+          <tr><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></tr>
+        </div>
+      
+          <div>
+            <tr class: "col-sm-2 control-label" %>郵便番号:</tr>
+            <tr><%= @customer.postal_code %></tr>
+          </div>
+          
+           <div>
+             <tr class: "col-sm-2 control-label" %>住所:</tr>
+            <tr><%= @customer.address %></tr>
+           </div>
+         <div class="col-xs-12">
+           <tr class: "col-sm-2 control-label" %>電話番号:</tr>
+           <tr><%= @customer.telephone_number %></tr>
+         </div>
+       <div class="col-xs-12">
+         <tr class: "col-sm-2 control-label" %>メールアドレス:</tr>
+         <tr class:"mx-5"><%= @customer.email %></tr>
+       </div>
+        <div class="fcol-xs-12">
+         <tr class: "col-sm-2 control-label" %>会員ステータス</tr>
+        <% if @customer.is_deleted == true %><p class="text-success">有効</p>
+        <p><% else %>退会</p>
+          <% end %>
+         
+       </div>
+         <div class='mx-5'>
+           <%= link_to '編集する',edit_admin_customer_path(@customer),class:"btn btn-success" %>
+         </div>
+         <div>
+         <%= link_to '一覧へ',admin_customers_path(@customer)%>
+        </div>
+     </div>
