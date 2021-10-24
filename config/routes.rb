@@ -21,8 +21,13 @@ Rails.application.routes.draw do
     end
 	 end
     resources :deliveries
+    resources :orders do
+     collection do
+         get 'confirm'
+         get 'complete'
+     end
+    end
 
-  
 
     namespace :admin do
     resources :items
