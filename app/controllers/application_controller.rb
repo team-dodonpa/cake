@@ -6,11 +6,11 @@ protect_from_forgery with: :exception
   helper_method :current_cart
 
   def current_cart
-    if session[:cart_id]
-      @cart = Cart.find(session[:cart_id])
+    if session[:cart_detail_id]
+      @customer = Cart.find(session[:cart_detail_id])
     else
-      @cart = Cart.create
-      session[:cart_id] = @cart.id
+      @customer = Cart.create
+      session[:cart_detail_id] = @cart_detail.id
     end
   end
 

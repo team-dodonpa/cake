@@ -10,11 +10,12 @@ Rails.application.routes.draw do
     passwords:     'customers/passwords',
     registrations: 'customers/registrations'
    }
-    resources :cart_details
+    resources :cart_details do
+    collection do
+    delete 'destroy_all'
+    end
+  end
     resources :items
-  post '/add_item' => 'carts#add_item'
-  post '/update_item' => 'carts#update_item'
-  delete '/delete_item' => 'carts#delete_item'
     resources :homes
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :customers do
