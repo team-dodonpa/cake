@@ -1,0 +1,43 @@
+<%= form_with model:@customer, url: admin_customer_path, local:true do |f| %>
+<h4 class="ml-4 d-inline"style="color: black; background-color: silver;"><%= @customer.first_name %> <%= @customer.last_name %>さんの会員情報編集</h4>
+  <div class="m-5">
+      <div class="form-group col-xs-12">
+         <%= f.label "会員", class: "col-sm-2 control-label" %>
+         <%= @customer.id %>
+         </div>
+      <div class="form-group col-xs-12">
+        <%= f.label "氏名", class: "col-sm-2 control-label" %>
+        <%= f.text_field :first_name %> <%= f.text_field :last_name %>
+      </div>
+        <div class="form-group col-xs-12">
+          <%= f.label "フリガナ", class: "col-sm-2 control-label" %>
+          <%= f.text_field :first_name_kana %> <%= f.text_field :last_name_kana %>
+        </div>
+          <div class="form-group col-xs-12">
+            <%= f.label "郵便番号", class: "col-sm-2 control-label" %>
+            <%= f.text_field :postal_code %>
+          </div>
+           <div class="form-group col-xs-2">
+             <%= f.label "住所", class: "col-sm-2 control-label" %>
+             <%= f.text_field :address, class: "col-sm-4" %>
+           </div>
+         <div class="form-group col-xs-12">
+           <%= f.label "電話番号", class: "col-sm-2 control-label" %>
+           <%= f.text_field :telephone_number %>
+         </div>
+       <div class="form-group col-xs-12">
+         <%= f.label "メールアドレス", class: "col-sm-2 control-label" %>
+         <%= f.text_field :email %>
+       </div>
+       <div class="form-group col-xs-12">
+         <%= f.label "会員ステータス", class: "col-sm-2 control-label" %>
+         <%= f.label :is_deleted, "有効",value:true %>
+         <%= f.radio_button :is_deleted, true ,checked: true %>
+         <%= f.label :is_deleted, "退会",value:false %>
+         <%= f.radio_button :is_deleted, false %>
+       </div> 
+      <div class='form-inline ml-5'>
+         <%= f.submit '変更を保存',class: "btn btn-success col-6" %>
+      </div>
+   <% end %>
+ </div>
