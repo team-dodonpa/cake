@@ -1,1 +1,37 @@
 <h1>注文履歴（仮）</h1>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <table class="table table-hover table-bordered table-condensed">
+      <thead>
+        <tr class="info">
+          <th>購入日</th>
+          <th>注文コース</th>
+          <th>注文ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @order.each do |order| %>
+        <tr>
+          <td>
+            <%= link_to admin_order_path(order) %>
+            <%= order.created_at %>
+            <% end %>
+          </td>
+          <td class="text-left">
+            <%= full_name(order.customer) %>
+          </td>
+          <td class="text-right">
+            <%= order.order_details.count %>
+          </td>
+          <td>
+            <%= order.order_status %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="text-center"><%= paginate(@order) %></div>
+</div>
