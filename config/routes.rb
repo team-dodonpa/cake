@@ -12,6 +12,9 @@ Rails.application.routes.draw do
    }
     resources :cart_details
     resources :items
+  post '/add_item' => 'carts#add_item'
+  post '/update_item' => 'carts#update_item'
+  delete '/delete_item' => 'carts#delete_item'
     resources :homes
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :customers do
