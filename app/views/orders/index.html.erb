@@ -1,25 +1,26 @@
 <h4 class="ml-4 d-inline"style="color: black; background-color: silver;">注文履歴一覧</h4>
 
-  <table>
-    
+  <table class="table  table-bordered w-75 m-5">
+<thead>
       <tr>
-        <td>注文日</td>
-        <td>配送先</td>
-        <td>注文商品</td>
-        <td>支払い合計</td>
-        <td>ステータス</td>
-        <td>注文詳細</td>
+        <td class="p-2"style="color: black; background-color: silver;">注文日</td>
+        <td class="p-2"style="color: black; background-color: silver;">配送先</td>
+        <td class="p-2"style="color: black; background-color: silver;">注文商品</td>
+        <td class="p-2"style="color: black; background-color: silver;">支払い合計</td>
+        <td class="p-2"style="color: black; background-color: silver;">ステータス</td>
+        <td class="p-2"style="color: black; background-color: silver;">注文詳細</td>
       </tr>
-      
-  </table>
+</thead>
 
 
 
 
-
+<tbody>
             <% @orders.each do |order| %>
             <%= order.postal_code %>
             <%= order.address %>
             <%= order.address_name %>
-            
-            <%#= link_to '表示する' , class:"btn btn-primary" %>
+            <% end %>
+            <%= link_to '表示する' , class:"btn btn-primary" %>
+  </tbody>
+  </table>

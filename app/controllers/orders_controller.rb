@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
     before_action :authenticate_customer!
 
     def index
-      @customer = Customer.find(params[:id])
+      @customer = current_customer
       @orders = @customer.orders
     end
 
@@ -14,6 +14,12 @@ class OrdersController < ApplicationController
     end
 
     def new
+    end
+
+    def confirm
+    end
+
+    def complete
     end
 
     def create
