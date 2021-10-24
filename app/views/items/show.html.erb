@@ -4,7 +4,7 @@
 	</div>
 
 	<div>
-		<%= form_for(@cart_detail , url: cart_details_path(item_id: @item), method: :post) do |form| %>
+		<%= form_for(@cart_detail ,url:cart_details_path(item_id: @item.id), method: :post) do |form| %>
 		<h3><%= @item.name %></h3>
 		<p><%= @item.introduction %></p>
 	<div>
