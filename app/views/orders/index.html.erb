@@ -1,26 +1,32 @@
 <h4 class="ml-4 d-inline"style="color: black; background-color: silver;">注文履歴一覧</h4>
 
   <table class="table table-bordered w-75 m-5">
-<thead>
-      <tr>
-        <td class="p-2"style="color: black; background-color: silver;">注文日</td>
-        <td class="p-2"style="color: black; background-color: silver;">配送先</td>
-        <td class="p-2"style="color: black; background-color: silver;">注文商品</td>
-        <td class="p-2"style="color: black; background-color: silver;">支払い合計</td>
-        <td class="p-2"style="color: black; background-color: silver;">ステータス</td>
-        <td class="p-2"style="color: black; background-color: silver;">注文詳細</td>
-      </tr>
-</thead>
-
-
-
-
-<tbody>
-            <% @orders.each do |order| %>
-            <%= order.postal_code %>
-            <%= order.address %>
-            <%= order.address_name %>
-            <% end %>
-            <%= link_to '表示する' ,class:"btn btn-primary" %>
-  </tbody>
+    <thead>
+        <tr>
+          <td class="p-2"style="color: black; background-color: silver;">注文日</td>
+            <td class="p-2"style="color: black; background-color: silver;">配送先</td>
+              <td class="p-2"style="color: black; background-color: silver;">注文商品</td>
+              <td class="p-2"style="color: black; background-color: silver;">支払い合計</td>
+            <td class="p-2"style="color: black; background-color: silver;">ステータス</td>
+          <td class="p-2"style="color: black; background-color: silver;">注文詳細</td>
+        </tr>
+    </thead>
+  
+    <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.postal_code %><br>
+                <%= order.address %><br>
+                <%= order.address_name %><br>
+            </td>
+            <td><%= order.item.name %><br></td>
+         <% end %>
+         <%= @order_details.each do |order_details| %>
+            <td><%= order_details.making_status %></td>
+              <td>合計:<%= (order_details.item.price*order_details.amount) %>円</td>
+            <td><%= link_to '表示する' ,class:"btn btn-primary" %></td>
+          </tr>
+        <% end %>
+  
+      </tbody>
   </table>
