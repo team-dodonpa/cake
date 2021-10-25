@@ -1,12 +1,14 @@
-<div class='row'></div>
- <h2>ジャンル追加</h2>
+<div class='container t-5'>
+  <div class='row'>
+    <div class="col-sm-12 sm-12 px-5 px-sm0">
+   <h2 class="mt-5 mb-3">ジャンル追加</h2>
       <%= form_with model:@genre, url:'/admin/genres', local:true do |f| %>
          <%= f.label :ジャンル名　 %>
          <%= f.text_field :name %>
          <%#= f.attachment_field %>
          <%= f.submit '新規登録', class: "btn btn-success" %>
         <% end %>
-      <h2 >ジャンル一覧</h2>
+      <h2 class="mt-5 mb-3">ジャンル一覧</h2>
       <div class="d-flex flex-wrap mt-5">
       <% @genres.each do |genre| %>
         <div class="col-3 px-2 mb-4">
@@ -16,4 +18,6 @@
         </div>
       <% end %>
       </div>
+    </div>
   </div>
+</div>

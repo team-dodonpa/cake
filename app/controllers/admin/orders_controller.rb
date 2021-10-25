@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
 
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
 
   def index
       @orders = Order.all.page(params[:page]).per(10)
@@ -8,7 +8,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
       @order = Order.find(params[:id])
-      #@order_details = @order.order_details←detail設定後解禁
+      @order_details = @order.order_details#←detail設定後解禁
   end
 
   def update
