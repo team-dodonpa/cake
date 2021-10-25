@@ -1,0 +1,19 @@
+<h3>注文情報確認</h3>
+<%= form_with model: @order, local:true do |f| %>
+<% @cart_details.each do |cart_detail| %>
+<%= attachment_image_tag cart_detail.item, :image, :fill, 200, 150, format: 'jpeg',fallback: "no_image.jpg" %>
+<%= cart_detail.item.name %>
+<%= cart_detail.item.price %>
+<%= cart_detail.amount %>
+<% end %>
+
+<%= @order.payment_method_i18n %>
+<%=f.hidden_field :postal_code %>
+<%=f.hidden_field :address %>
+<%=f.hidden_field :name %>
+<%= @order.postal_code %>
+<%= @order.address %><br>
+<%= @order.name %> 
+
+<%= f.submit '注文を確定する',class:"btn btn-success ml-5" %>
+<% end %>

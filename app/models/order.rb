@@ -1,10 +1,12 @@
 class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details, dependent: :destroy
+  has_many :cart_details
 
 
 
 
-  enum status: {"入金待ち":0,"入金確認":1,"制作中":2,"発送準備":3,"発送済み":4}
-  enum payment_method: {"クレジッドカード":0,"銀行振り込み": 1}
+  enum status: {waiting: 0,checked: 1,making: 2,ready: 3,sent: 4}
+  enum payment_method: {credit: 0,cash: 1}
+  # enum name: {"ご自身の住所":0,"登録済住所から選択":1,"新しいお届け先":2}
 end

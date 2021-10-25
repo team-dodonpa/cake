@@ -5,4 +5,8 @@ class Delivery < ApplicationRecord
     validates :address_name, :address, presence: true
     validates :postal_code, numericality: { only_integer: true }
 
+def address_all
+    postal_code + address + address_name
+end
+  
 end
