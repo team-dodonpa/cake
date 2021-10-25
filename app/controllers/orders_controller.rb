@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
    #会員のみ閲覧可能
-    before_action :authenticate_customer!
+    #before_action :authenticate_customer!
 
     def index
       @customer = current_customer
@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     end
 
     def new
+    
     end
 
     def confirm
