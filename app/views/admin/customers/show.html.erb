@@ -2,40 +2,42 @@
 
     <div class='col-md-5'>
 
-        <table class="table table-bordered table-condensed" >
-            <tr><td class="mt-1" style="color: black; background-color: silver;">会員ID</td>
+        <table class="table" >
+            <div class= "text-center">
+            <tr><td class="m-1" >会員ID</td>
                 <td><%= @customer.id %></td>
             </tr>
 
-            <tr><td class="mt-1" style="color: black; background-color: silver;">氏名</td>
+            <tr><td class="m-1">氏名</td>
                 <td><%= @customer.first_name %> <%= @customer.last_name %></td>
             </tr>
             
-            <tr><td class="mt-1" style="color: black; background-color: silver;">カナ</td>
+            <tr><td class="m-1" >カナ</td>
                     <td><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td>
             </tr>
             
-            <tr><td class="mt-1" style="color: black; background-color: silver;">郵便番号</td>
+            <tr><td class="m-1">郵便番号</td>
                         <td><%= @customer.postal_code %></td>
             </tr>
             
-            <tr><td class="mt-1" style="color: black; background-color: silver;">住所</td>
+            <tr><td class="m-1" >住所</td>
                         <td><%= @customer.address %></td>
             </tr>
             
-            <tr><td class="mt-1" style="color: black; background-color: silver;">電話番号</td>
+            <tr><td class="m-1" >電話番号</td>
                     <td><%= @customer.telephone_number %></td>
             </tr>
             
-            <tr><td class="mt-1" style="color: black; background-color: silver;">メールアドレス</td>
+            <tr><td class="t-1" >メールアドレス</td>
                 <td><%= @customer.email %></td>
             </tr>
             
-            <tr><td class="mt-1" style="color: black; background-color: silver;">会員ステータス</td>
+            <tr><td class="mt-1" >会員ステータス</td>
                 <td><% if @customer.is_deleted == true %><p class="text-success">有効</p>
                  <p><% else %>退会</p>
                     <% end %></td>
             </tr>
+            </div>
         </table>
         <div class='form-inline m-4'>
             <div class='mx-5'>
