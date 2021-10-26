@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
    #会員のみ閲覧可能
-    before_action :authenticate_customer!
+    #before_action :authenticate_customer!
 
     def index
       @customer = current_customer
@@ -47,6 +47,16 @@ class OrdersController < ApplicationController
       @order = Order.new(order_params)
       @order.customer = current_customer
       @order.save
+      cart_items = current_customer.cart_details 
+      cart_items.each do |cart_item|
+        @order_detail = @order.order_details.new
+        @order_detail.price = cart_item.item.price
+        @order_detail.amount = cart_item.amount
+        @order_detail.item_id = cart_item.item_id
+        @order_detail.making_status = 0
+        @order_detail.save
+      end
+        cart_items.destroy_all
       redirect_to complete_orders_path
     end
 
