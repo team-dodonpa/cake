@@ -3,11 +3,18 @@
 <% @cart_details.each do |cart_detail| %>
 <%= attachment_image_tag cart_detail.item, :image, :fill, 200, 150, format: 'jpeg',fallback: "no_image.jpg" %>
 <%= cart_detail.item.name %>
-<%= cart_detail.item.price %>
+<%= (cart_detail.item.price*1.1).floor %>円
 <%= cart_detail.amount %>
+<%= (cart_detail.item.price*cart_detail.amount*1.1).floor %>円
 <% end %>
 
+<%= @order.shipping_cost %>円
+<%= @order.total_payment-@order.shipping_cost %>円
+<%= @order.total_payment%>円
 <%= @order.payment_method_i18n %>
+<%=f.hidden_field :shipping_cost %>
+<%=f.hidden_field :total_payment %>
+<%=f.hidden_field :payment_method %>
 <%=f.hidden_field :postal_code %>
 <%=f.hidden_field :address %>
 <%=f.hidden_field :name %>

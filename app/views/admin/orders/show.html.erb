@@ -7,7 +7,8 @@
 			購入者
 		  </div>
 		  <div class="col-xs-8">
-		    <%= @order.name %>
+		    <%= @orders.customer.first_name %>
+		    <%= @orders.customer.last_name %>
 		  </div>
 		</div>
 
@@ -75,7 +76,7 @@
 			            </td>
 			            <%= form_for(order_detail, url: admin_order_details_path(order_detail), method: :patch) do |f| %>
 			            <td>
-			            	<%= f.select :produciton_status, OrderDetail.produciton_statuses.keys, class: "order_status" %>
+			            	<%= f.select :making_status, OrderDetail.produciton_statuses.keys, class: "order_status" %>
 			            	<%= f.submit '更新'  ,class: "btn btn-warning" %>
 			            </td>
 			            <% end %>

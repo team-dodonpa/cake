@@ -9,3 +9,6 @@
     email: "admin@t",
     password: "142536"
   )
+  Order.create!(
+   shipping_cost:800
+   )
