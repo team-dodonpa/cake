@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
       @customer = current_customer
       @order = @customer.orders
       @cart_details = @customer.cart_details
+
     end
 
     def show
@@ -57,6 +58,7 @@ class OrdersController < ApplicationController
       @order.save
       cart_items = current_customer.cart_details 
       total_price = 0
+
       cart_items.each do |cart_item|
         @order_detail = @order.order_details.new
         @order_detail.price = cart_item.item.price
