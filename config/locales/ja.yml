@@ -4,3 +4,5 @@
         payment_method:
           credit: 'クレジットカード'
           cash: '銀行振込'
+        status:
+        
