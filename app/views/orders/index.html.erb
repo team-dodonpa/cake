@@ -19,11 +19,41 @@
               <td><%= order.postal_code %><br>
                   <%= order.address %><br>
                   <%= order.name %></td>
-                  <% order.order_details.each do |order_detail|%>
-                  <td><%= order_detail.item.name%></td>
-                  <td><%= order_detail.price%></td>
-                  <td><%=order_detail.making_status%></td>
-                  <% end %>
+
+<h4 class="ml-4 d-inline"style="color: black; background-color: silver;">注文履歴一覧</h4>
+
+  <table class="table table-bordered w-75 m-5">
+    <thead>
+        <tr>
+          <td class="p-2"style="color: black; background-color: silver;">注文日</td>
+            <td class="p-2"style="color: black; background-color: silver;">配送先</td>
+              <td class="p-2"style="color: black; background-color: silver;">注文商品</td>
+              <td class="p-2"style="color: black; background-color: silver;">支払い合計</td>
+            <td class="p-2"style="color: black; background-color: silver;">ステータス</td>
+          <td class="p-2"style="color: black; background-color: silver;">注文詳細</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @order.each do |order| %>
+          <tr>
+              <td> <%= order.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= order.postal_code %><br>
+                  <%= order.address %><br>
+                  <%= order.name %></td>
+                  <td><% order.order_details.each do |order_detail|%>
+                  <%= order_detail.item.name%>/
+                   <% end %>
+                   </td>
+                  <td><%= order.total_payment %>円</td> 
+                  <td><%= order.status_i18n %></td>
+                  
+          
+                 
+                  
+             
+              
+      
 
 
 
