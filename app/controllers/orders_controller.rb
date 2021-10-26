@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
 
     def index
       @customer = current_customer
-      @orders = @customer.orders
+      @order = @customer.orders
+      @cart_details = @customer.cart_details
     end
 
     def show
@@ -56,5 +57,5 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:postal_code, :address, :name, :payment_method,:address_option) #:shipping_cost, :total_payment, :status,)
     end
-    
+
 end
