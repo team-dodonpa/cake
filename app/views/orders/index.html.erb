@@ -19,6 +19,7 @@
               <td><%= order.postal_code %><br>
                   <%= order.address %><br>
                   <%= order.name %></td>
+
                   <td><% order.order_details.each do |order_detail|%>
                   <%= order_detail.item.name%>/
                    <% end %>
@@ -33,8 +34,12 @@
               
         
 
-          
-             
+
+
+
+
+
+
 
                 <td><%= link_to '表示する',order_path(order),class:"btn btn-primary ml-5" %></td>
             </tr>
