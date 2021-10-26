@@ -9,7 +9,7 @@
 <% end %>
 
 <%= @order.shipping_cost %>円
-<%= @order.total_payment-@order.shipping_cost %>円
+<%= @order.total_payment - @order.shipping_cost %>円
 <%= @order.total_payment%>円
 <%= @order.payment_method_i18n %>
 <%=f.hidden_field :postal_code, value: @order.postal_code %>
