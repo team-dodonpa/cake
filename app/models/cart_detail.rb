@@ -7,5 +7,5 @@ class CartDetail < ApplicationRecord
   end
   def sum_of_cart_price
     #cart_detail.item.price * amount
-  end 
+  end
 end
