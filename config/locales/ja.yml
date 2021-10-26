@@ -4,7 +4,7 @@ ja:
       payment_method:
         credit: 'クレジットカード'
         cash: '銀行振込'
-      status:　
+      status:
         waiting: '入金待ち'
         checked: '入金確認'
         making: '制作中'
