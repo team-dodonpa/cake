@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     def index
       @customer = current_customer
       @order = @customer.orders
-      @cart_details = @customer.cart_details
+      
     end
 
     def show
