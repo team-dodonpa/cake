@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     def index
       @customer = current_customer
       @order = @customer.orders
-      
+
     end
 
     def show
@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
       @order = Order.new(order_params)
       @order.customer = current_customer
       @order.save
-      cart_items = current_customer.cart_details 
+      cart_items = current_customer.cart_details
       cart_items.each do |cart_item|
         @order_detail = @order.order_details.new
         @order_detail.price = cart_item.item.price
