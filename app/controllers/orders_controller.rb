@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     end
 
     def show
+      @order = Order.find(params[:id])
     end
 
     def edit
@@ -64,8 +65,8 @@ class OrdersController < ApplicationController
     end
 
     private
-    def order_params
-      params.require(:order).permit(:postal_code, :address, :name, :payment_method,:address_option) #:shipping_cost, :total_payment, :status,)
+    def order_paramsa
+      params.require(:order).permit(:postal_code, :address, :name, :payment_method,:address_option,:shipping_cost, :total_payment, :status,)
     end
 
 end
