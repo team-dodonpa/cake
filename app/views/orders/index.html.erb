@@ -34,6 +34,11 @@
               
         
 
+                  <% order.order_details.each do |order_detail|%>
+                  <td><%= order_detail.item.name%></td>
+                  <td><%= order_detail.price%></td>
+                  <td><%=order_detail.making_status%></td>
+                  <% end %>
 
 
 

@@ -8,7 +8,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
       @order = Order.find(params[:id])
-      @order_details = @order.order_details#←detail設定後解禁
+      @order_details = @order.order_details
   end
 
   def update
@@ -20,6 +20,9 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
-
+ private
+ def order_params
+   params.require(:order).permit(:customer_id, :postal_code, :address, :name, :payment_method, :shipping_cost, :total_payment, :status)
+ end
 
 end
