@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
 #会員のみ閲覧可能
-    #before_action :authenticate_customer!
+    before_action :authenticate_customer!
+    before_action :customer_is_deleted
 
   def show
     @customer = Customer.find(params[:id])
@@ -35,7 +36,11 @@ class CustomersController < ApplicationController
   private
   	def customer_params
   		params.require(:customer).permit(:email,:encrypted_password,:reset_password_token,:reset_password_sent_at,:remember_created_at,:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:is_deleted,:update_at,:created_at)
-
   	end
-
+      def customer_is_deleted
+        if customer_signed_in? && current_customer.is_deleted?
+          reset_session
+         redirect_to root_path
+        end
+      end
 end

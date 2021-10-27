@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
    #会員のみ閲覧可能
-    #before_action :authenticate_customer!
+    before_action :authenticate_customer!
 
     def index
       @customer = current_customer
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     end
 
     def confirm
-      @order = Order.new
+      @order = Order.new(order_params)
       @order.shipping_cost = 800
       cart_items = current_customer.cart_details
       total = @order.shipping_cost
@@ -44,8 +44,6 @@ class OrdersController < ApplicationController
         @order.address = @delivery.address
         @order.name = @delivery.address_name
       elsif params[:order][:address_option] == "2"
-        @delivery = Delivery.new
-        @delivery.customer = current_customer
       end
     end
 
@@ -83,7 +81,8 @@ class OrdersController < ApplicationController
 
     private
     def order_params
-      params.require(:order).permit(:postal_code, :address, :name, :payment_method,:address_option,:shipping_cost, :total_payment, :status,)
-    end
 
+      params.require(:order).permit(:postal_code, :address, :name, :payment_method,:shipping_cost, :total_payment, :status)
+
+    end
 end

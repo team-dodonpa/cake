@@ -1,5 +1,6 @@
 <h4 class="m-4 d-inline"style="color: black; background-color: silver;">注文情報確認</h4>
 <%= form_with model: @order, local:true do |f| %>
+
 <div class="container">
     <div class="row">
      <div class="col-sm-8">   
@@ -50,6 +51,7 @@
    </td>
    <td><%= @order.payment_method_i18n %></td>
   </tr> 
+
 <%=f.hidden_field :postal_code, value: @order.postal_code %>
 <%=f.hidden_field :address, value: @order.address %>
 <%=f.hidden_field :name, value: @order.name %>
