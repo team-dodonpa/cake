@@ -82,7 +82,7 @@
 					 <td>
 					 	　<%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch, local: true do |f| %>
 					 	 <%= f.select :making_status,OrderDetail.making_statuses_i18n.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}, class: "order_detail_making_status" %>
-						 <%= f.submit '更新'  ,class: "btn btn-warning" %>
+						 <%= f.submit '更新'  ,class: "btn btn-success" %>
 						 <% end %>
 
 					 </td>
