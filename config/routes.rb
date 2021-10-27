@@ -38,5 +38,6 @@ Rails.application.routes.draw do
     resources :customers
     resources :genres
     resources :orders
+    resources :order_details
     end
 end
