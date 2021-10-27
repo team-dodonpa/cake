@@ -6,15 +6,14 @@
         <% @items.each do |item| %>
 		     <div class="col-xs-3, top" style="padding-right: 0px; padding-left: 0px; margin: 5px;">
 			     <%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
-				   <%= attachment_image_tag item, :image, :fill, 200, 150, format: 'jpeg',fallback: "no_image.jpg" %><br>
+				   <%= attachment_image_tag item, :image, :fill, 200, 150, format: 'jpeg',fallback: "no_image.jpg",size:'500x420' %><br>
 			     <%= item.name %>
-				   ¥<%= item.price.to_s(:delimited, delimiter: ',') %>
+				   ¥<%= item.price %>
 			     <% end %>
 		     </div>
 	      <% end %>
 	    </div>
       <div style="text-align: center;"><%= paginate @items %></div>
     </div>
-</div>
-</div>
+  </div>
 </div>
