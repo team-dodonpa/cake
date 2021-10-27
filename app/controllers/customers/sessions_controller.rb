@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Customers::SessionsController < Devise::SessionsController
+   before_action :customer_is_deleted
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -24,5 +25,10 @@ class Customers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
+def customer_is_deleted
+        if customer_signed_in? && current_customer.is_deleted?
+          reset_session
+         redirect_to new_customer_session_path
+        end
+end
 end
