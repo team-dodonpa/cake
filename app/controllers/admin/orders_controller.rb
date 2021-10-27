@@ -15,6 +15,9 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     #@order.shipping_cost = 800
     if @order.update(order_params)
+      if @order.status == "checked"
+        @order.order_details.update_all(making_status: "waiting_for_make")
+      end
       redirect_to admin_order_path(@order)
     else
       render "show"
