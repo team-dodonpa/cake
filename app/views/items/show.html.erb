@@ -5,7 +5,7 @@
 		<p class="item-content1"><%= attachment_image_tag @item, :image, :fill, 300, 250, format: 'jpeg',fallback: "no_image.jpg", size:'500x420' %></p>
 	</div>
 
-	<div >
+	<div>
 		<%= form_for(@cart_detail ,url:cart_details_path(item_id: @item.id), method: :post) do |form| %>
 		<h4><%= @item.name %></h4>
 		<p><%= @item.introduction %></p>
