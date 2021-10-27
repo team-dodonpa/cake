@@ -13,6 +13,6 @@ ja:
     order_detail:
       making_status:
         not_statable: '着手不可'
-        waiting_for_make: '制作中'
+        waiting_for_make: '制作待ち'
         making: '制作中'
         complete: '制作完了'
