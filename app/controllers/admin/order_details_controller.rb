@@ -14,7 +14,16 @@ class Admin::OrderDetailsController < ApplicationController
 
    def update
     @order_detail = OrderDetail.find(params[:id])
+    @order = @order_detail.order
     if @order_detail.update(order_detail_params)
+        @order.order_details.each do |order_detail|
+            if order_detail.making_status == "making"
+                order_detail.order.update(status: "making")
+            end
+        end
+        if @order.order_details.count == @order.order_details.where(making_status: "complete").count
+            @order_detail.order.update(status: "ready")
+        end
        redirect_to admin_order_path(@order_detail.order)
     else
 		     render "show"
