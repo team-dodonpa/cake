@@ -11,5 +11,4 @@ class Customer < ApplicationRecord
         validates :first_name, :first_name_kana, :last_name, :last_name_kana, :address, :email, :address, presence: true
         validates :telephone_number, :postal_code, numericality: { only_integer: true }
 
-
 end

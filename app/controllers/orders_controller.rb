@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
    #会員のみ閲覧可能
-    #before_action :authenticate_customer!
+    before_action :authenticate_customer!
 
     def index
       @customer = current_customer
@@ -83,5 +83,4 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:postal_code, :address, :name, :payment_method,:shipping_cost, :total_payment, :status)
     end
-
 end
