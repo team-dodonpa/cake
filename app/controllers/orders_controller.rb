@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     def confirm
       @order = Order.new
       @order.shipping_cost = 800
-      cart_items = current_customer.cart_details 
+      cart_items = current_customer.cart_details
       total = @order.shipping_cost
       cart_items.each do |cart_item|
         total += cart_item.item.price*cart_item.amount*1.1
@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
       @order.customer = current_customer
       @order.shipping_cost = 800
       @order.save
-      cart_items = current_customer.cart_details 
+      cart_items = current_customer.cart_details
       total_price = 0
 
       cart_items.each do |cart_item|
@@ -73,7 +73,7 @@ class OrdersController < ApplicationController
       @order.total_payment = total_price
       @order.status = 0
       @order.save
-      
+
         cart_items.destroy_all
       redirect_to complete_orders_path
     end
@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
     end
 
     private
-    def order_paramsa
+    def order_params
       params.require(:order).permit(:postal_code, :address, :name, :payment_method,:address_option,:shipping_cost, :total_payment, :status,)
     end
 

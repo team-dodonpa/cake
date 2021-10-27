@@ -2,13 +2,23 @@
   <div class="row">
     <div class="col-xs-12" >
       <div class="col-xs-9">
+
 		<div class="field">
 		  <div class="col-xs-4">
 			購入者
 		  </div>
 		  <div class="col-xs-8">
-		    <%= @orders.customer.first_name %>
-		    <%= @orders.customer.last_name %>
+		    <%= @order.customer.first_name %>
+		    <%= @order.customer.last_name %>
+		  </div>
+		</div>
+
+		<div class="field">
+		  <div class="col-xs-4">
+			購入日
+		  </div>
+		  <div class="col-xs-8">
+		    <%= @order.created_at.strftime('%Y/%m/%d') %>
 		  </div>
 		</div>
 
@@ -17,7 +27,9 @@
 	        配送先
 	      </div>
 	      <div class="col-xs-8">
-	        <%= full_address(@order) %>
+	        <%= @order.address %>
+	        <%= @order.postal_code %>
+	        <%= @order.name %>
 	      </div>
 	    </div>
 
@@ -26,23 +38,21 @@
 	        支払い方法
 	      </div>
 	      <div class="col-xs-8">
-	        <%= @order.payment_method %>
+	        <%= @order.payment_method_i18n %>
 	      </div>
 	    </div>
-
- 	  <%= form_for(@order, url: admin_order_path, method: :patch) do |f| %>
- 	    <div class="col-xs-4">注文ステータス</div>
+	    <%= form_for(@order, url: admin_order_path, method: :patch) do |f| %>
+	     <div class="col-xs-4">注文ステータス</div>
       	  <div class="col-xs-6">
-            <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
+            <%= f.select :status,Order.statuses_i18n.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]}, class: "order_status" %>
           </div>
-
-      	<div class="actions">
+          	<div class="actions">
           <div class="col-xs-2"><%= f.submit '更新'  ,class: "btn btn-primary" %></div>
       	</div>
       <% end %>
-      </div>
 
-	  <div class="buyer-order col-xs-9">
+
+        <div class="buyer-order col-xs-9">
 			<table class="table table-hover table-bordered table-inverse">
 			    <thead>
 			        <tr class="info">
@@ -51,59 +61,56 @@
 			          <th>数量</th>
 			          <th>小計</th>
 			          <th>製作ステータス</th>
+							</tr>
+					</thead>
 
-			        </tr>
-			    </thead>
-				<tbody>
-				<% if flash[:notice] %>
-		          	<div class="flash">
-		             <%= flash[:notice] %>
-		          	</div>
-	          	<% end %>
-				<% @order_details.each do |order_detail| %>
+					<% @order.order_details.each do |order_detail| %>
 					<tr>
-			            <td class="text-left">
-			              <%= order_detail.product.name %>
-			            </td>
-			            <td class="text-right">
-			              ¥<%= tax_price(order_detail.product.tax_out_price).to_s(:delimited) %>
-			            </td>
-			            <td class="text-right">
-			              <%= order_detail.quantity %>
-			            </td>
-			            <td class="text-right">
-			              ¥<%= sub_price(order_detail).to_s(:delimited) %>
-			            </td>
-			            <%= form_for(order_detail, url: admin_order_details_path(order_detail), method: :patch) do |f| %>
-			            <td>
-			            	<%= f.select :making_status, OrderDetail.produciton_statuses.keys, class: "order_status" %>
-			            	<%= f.submit '更新'  ,class: "btn btn-warning" %>
-			            </td>
-			            <% end %>
-			      	</tr>
-				<% end %>
-				</tbody>
-			</table>
-	  </div>
+						<td>
+							<%= order_detail.item.name %>
+						</td>
+						<td>
+							<%= order_detail.price %>
+						</td>
+						<td>
+					 		<%= order_detail.amount %>
+					 </td>
+					 <td>
 
-	  <div class="col-xs-3  billing">
-			<table class="table table-hover table-bordered table-condensed">
-				<tr>
-            		<th class="info">商品合計</th>
-					<td>¥<%= total_price(@order_details).to_s(:delimited) %></td>
-				</tr>
-				<tr>
-					<th class="info">送料</th>
-					<td>¥<%= @order.postage.to_s(:delimited) %></td>
-				</tr>
-				<tr>
-					<th class="info">請求金額合計</th>
-					<td>¥<%= @order.total_price.to_s(:delimited) %></td>
-				</tr>
-		    </table>
-	  </div>
-    <div class="col-xs-12">
-      <%= link_to "戻る", admin_orders_path, class: "glyphicon glyphicon-home btn btn-info" %>
-    </div>
-	  </div>
-  </div>
+					 </td>
+					 <td>
+					 	 <%#= f.select :making_status,OrderDetail.making_statuses_i18n.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}, class: "order_detail_making_status" %>
+
+					 	 <%#= f.submit '更新'  ,class: "btn btn-warning" %>
+
+					 </td>
+					</tr>
+					<% end %>
+					</table>
+				</div>
+
+
+				<div class="col-xs-3  billing">
+					<table class="table table-hover table-bordered table-condensed">
+						<tr>
+            	<th class="info">商品合計
+             		<td></td>
+            	</th>
+          	</tr>
+          	<tr>
+          		<th class="info">送料</th>
+          		<tb></tb>
+          	</tr>
+          	<tr>
+          		<th class="info">請求金額合計</th>
+          		<tb></tb>
+          	</tr>
+          </table>
+         </div>
+         <div class="col-xs-12">
+      		<%= link_to "戻る", admin_orders_path, class: "glyphicon glyphicon-home btn btn-info" %>
+    		 </div>
+
+	  	</div>
+  	</div>
+	</div>
