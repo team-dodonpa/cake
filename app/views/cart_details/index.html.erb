@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= cart_detail.item.name %></td>
+      <td><p><%= attachment_image_tag cart_detail.item, :image, :fill, 200, 150, format: 'jpeg',fallback: "no_image.jpg" %></p><%= cart_detail.item.name %></td>
       <td><%= (cart_detail.item.price*1.1).floor %>円</td>
       <td><%= form_with model:cart_detail,url:cart_detail_path(cart_detail),local:true do |f| %>
           <%= f.hidden_field :item_id, value: cart_detail.item.id %>
