@@ -1,5 +1,5 @@
 <div class="container">
-    <h4 class="ml-5 d-inline"style="color: black; background-color: silver;">配送先登録/一覧</h4>
+    <h4 class="ml-5 d-inline"style="color:black; background-color: silver;">配送先登録/一覧</h4>
   <div class="row">
       <%= render 'deliveries/error',resource:@delivery %>
       <%= form_with model:@delivery, local:true do |f| %>
@@ -30,8 +30,8 @@
                  <td><%= delivery.postal_code %></td>
                    <td><%= delivery.address %></td>
                  <td><%= delivery.address_name %></td>
-                 <td><%= link_to '編集する',edit_delivery_path(delivery),class:"btn btn-success ml-4" %>
-                     <%= link_to '削除する',delivery_path(delivery),method: :delete, data: {confirm: "本当に削除してもよろしいですか？"},class:"btn btn-danger ml-3" %>
+                 <td><%= link_to'編集する',edit_delivery_path(delivery),class:"btn btn-success ml-4" %>
+                     <%= link_to'削除する',delivery_path(delivery),method: :delete, data: {confirm: "本当に削除してもよろしいですか？"},class:"btn btn-danger ml-3" %>
                  </td>
               </tr>
             <% end %>
