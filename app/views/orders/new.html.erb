@@ -1,0 +1,91 @@
+<h4 class="ml-4 d-inline"style="color: black; background-color: silver;">注文情報入力</h4>
+
+<%= form_with model: @order,url: confirm_orders_path, method: :get, local:true do |f| %>
+<div class="m-5">
+  
+  <div class="form-group col-xs-12">
+    <h4 class = "font-weight-bold">支払方法</h4>
+    <%#= f.label "販売ステータス", class: "col-sm-2 control-label" %>
+    <div class="ml-4">
+      <table>
+        <tr>
+          <td>
+          <%= f.label :payment_method, "クレジットカード",value:0 %>
+          <%= f.radio_button :payment_method, :credit %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <%= f.label :payment_method, "銀行振込",value:1 %>
+          <%= f.radio_button :payment_method, :cash %>
+          </td>
+        </tr>
+      </table>
+  </div>
+</div>  
+ <div class="form-group col-xs-12">
+   <h4 class = "font-weight-bold">お届け先</h4>
+   <div class="ml-4">
+     <table>
+       <tr>
+         <td>
+          <%= f.label :address_option,"ご自身の住所",value:0 %>
+          <%= f.radio_button :address_option,0 %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class ="ml-5">
+              〒<%= @customer.postal_code %>
+              <%= @customer.address %>
+              <%= @customer.first_name %> <%= @customer.last_name %>
+            </div>
+          </td>
+        </tr>  
+        <tr>
+          <td>  
+            <%= f.label :address_option,"登録済住所から選択",value:1 %>
+            <%= f.radio_button :address_option,1 %>
+            <%= f.collection_select :delivery_id,current_customer.deliveries,:id,:address_all %>
+          </td>
+          
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :address_option,"新しいお届け先",value:2 %>
+            <%= f.radio_button :address_option,2 %>
+          </td>  
+        </tr>
+        <tr>
+          <td>
+                <div class="form-group col-xs-12 ml-5">
+                        <%= f.label "郵便番号（ハイフンなし）", class: "col-sm-2 control-label" %>
+                        <%= f.text_field :postal_code %>
+                </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+        
+                <div class="form-group col-xs-12 ml-5">
+                        <%= f.label "住所", class: "col-sm-2 control-label" %>
+                        <%= f.text_field :address,class: "col-sm-4"  %>
+                </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+                <div class="form-group col-xs-12 ml-5">
+                        <%= f.label "宛先", class: "col-sm-2 control-label" %>
+                        <%= f.text_field :name %>
+                </div>
+          </td>
+        </tr>
+       </table>
+            <div class="text-center m-5">
+                       <%= f.submit '確認画面へ進む',class:"btn btn-success ml-5" %>
+            </div>    
+  <% end %>
+ 
+  </div>
+</div>  

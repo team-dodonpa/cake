@@ -1,0 +1,12 @@
+        <% else if admin_signed_in? %>
+          <li class="nav-item p-2 mr-5 btn-light rounded">
+          <%= link_to '商品一覧',admin_items_path,class: "text-decoration-none text-secondary"%></li>
+          <li class="nav-item p-2 mr-5 btn-light rounded">
+          <%= link_to '会員一覧',admin_customers_path,class: "text-decoration-none text-secondary"%></li>
+          <li class="nav-item p-2 mr-5 btn-light rounded">
+          <%= link_to '注文一覧',class: "text-decoration-none text-secondary"%></li>
+          <li class="nav-item p-2 mr-5 btn-light rounded">
+          <%= link_to 'ジャンル一覧',admin_genres,class: "text-decoration-none text-secondary"%></li>
+          <li class="nav-item p-2 mr-5 btn-light rounded">
+          <%= link_to ' logout', destroy_admin_session_path, method: :delete,class: "text-decoration-none text-secondary"%></li>
+       
